@@ -165,6 +165,7 @@ end
 
 function SWEP:SetupDataTables()
 	self:NetworkVar( "Bool", 5, "Grenading" )
+	self:NetworkVar( "Float", 5, "SpawnedTime" )
 	self:NetworkVar( "Float", 5, "GrenadeTime" )
 end
 

@@ -8,6 +8,19 @@ AddCSLuaFile("shared.lua")
 include("shared.lua")
 
 SWEP.MoanDelay = 1
+SWEP.SpawnUseDelay = 5
+
+function SWEP:Equip()
+
+	self:SetSpawnedTime( CurTime() + self.SpawnUseDelay )
+	
+	print( self:GetSpawnedTime() )
+
+end
+
+function SWEP:Think()
+
+end
 
 function SWEP:Reload()
 	if CurTime() < self:GetNextSecondaryFire() then return end
@@ -18,11 +31,14 @@ function SWEP:Reload()
 	else
 		self:StartMoaning()
 	end
+	
+	print( self:GetSpawnedTime() )
 end
 
 function SWEP:SecondaryAttack()
 	if CLIENT then return end
 	if not self.Owner:OnGround() || self:IsMoaning() || self:GetGrenading() then return end
+	if CurTime() < self:GetSpawnedTime() then return end
 
 	self:DoAlert()
 	

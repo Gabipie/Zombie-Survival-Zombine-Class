@@ -32,7 +32,7 @@ function ENT:Think()
 	elseif self.DieTime <= CurTime() then
 		self:Explode()
 		self.Owner:Kill()
-	elseif not self.Owner:Alive() then 
+	elseif not self.Owner:Alive() or not self.Owner:IsValid() then 
 		self:Remove()
 	end
 end
@@ -123,12 +123,4 @@ function ENT:Draw()
 	
 	end
 
-end
-
-function ENT:PrePlayerDraw(pl)
-	if pl ~= self:GetOwner() then return end
-end
-
-function ENT:PostPlayerDraw(pl)
-	if pl ~= self:GetOwner() then return end
 end
