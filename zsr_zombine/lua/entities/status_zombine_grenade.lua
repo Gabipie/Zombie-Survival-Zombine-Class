@@ -12,7 +12,6 @@ ENT.NextTickSound = 0
 ENT.GrenadeDamage = 85
 ENT.GrenadeRadius = 128
 ENT.Model = Model("models/weapons/w_grenade.mdl")
-util.PrecacheModel("models/weapons/w_grenade.mdl")
 
 function ENT:Initialize()
 	self.BaseClass.Initialize(self)
