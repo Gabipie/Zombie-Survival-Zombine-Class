@@ -201,6 +201,16 @@ function CLASS:DoAnimationEvent(pl, event, data)
 	end
 end
 
+function CLASS:ProcessDamage(pl, dmginfo)
+	local attacker = dmginfo:GetAttacker()
+	local wep = pl:GetActiveWeapon()
+	if attacker:IsPlayer() and attacker:Team() == TEAM_HUMAN then
+		if wep:IsValid() and wep:IsMoaning() and wep.IsMoaning then
+			wep:StopMoaning()
+		end	
+	end
+end
+
 function CLASS:DoesntGiveFear(pl)
 	return IsValid(pl.FeignDeath)
 end

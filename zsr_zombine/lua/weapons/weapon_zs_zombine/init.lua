@@ -13,8 +13,6 @@ SWEP.SpawnUseDelay = 5
 function SWEP:Equip()
 
 	self:SetSpawnedTime( CurTime() + self.SpawnUseDelay )
-	
-	print( self:GetSpawnedTime() )
 
 end
 
@@ -31,8 +29,7 @@ function SWEP:Reload()
 	else
 		self:StartMoaning()
 	end
-	
-	print( self:GetSpawnedTime() )
+
 end
 
 function SWEP:SecondaryAttack()
