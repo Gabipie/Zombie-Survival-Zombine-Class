@@ -95,8 +95,8 @@ function ENT:Explode()
 	if owner:IsValid() and owner:IsPlayer() and owner:Team() == TEAM_UNDEAD then
 		local pos = self:GetPos()
 
-		--util.PoisonBlastDamage(self, owner, pos, self.GrenadeRadius, self.GrenadeDamage, true)
-		util.BlastDamage( self, owner, pos, self.GrenadeRadius, self.GrenadeDamage )
+		util.PoisonBlastDamage(self, owner, pos, self.GrenadeRadius, self.GrenadeDamage, true)
+		--util.BlastDamage( self, owner, pos, self.GrenadeRadius, self.GrenadeDamage )
 		
 		local effectdata = EffectData()
 			effectdata:SetOrigin(pos)
