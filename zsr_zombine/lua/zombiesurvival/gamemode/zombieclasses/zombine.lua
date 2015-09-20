@@ -6,7 +6,7 @@ CLASS.TranslationName = "class_zombine"
 CLASS.Description = "description_zombine"
 CLASS.Help = "controls_zombine"
 
-CLASS.Wave = 5 / 6
+CLASS.Wave = 6 / 6
 
 CLASS.Health = 380
 CLASS.Speed = 120

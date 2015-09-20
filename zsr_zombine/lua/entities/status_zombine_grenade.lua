@@ -7,10 +7,10 @@ ENT.Type = "anim"
 ENT.Base = "status__base"
 ENT.RenderGroup = RENDERGROUP_OPAQUE
 
-ENT.LifeTime = 8
+ENT.LifeTime = 4
 ENT.NextTickSound = 0
-ENT.GrenadeDamage = 85
-ENT.GrenadeRadius = 128
+ENT.GrenadeDamage = 45
+ENT.GrenadeRadius = 256
 ENT.Model = Model("models/weapons/w_grenade.mdl")
 
 function ENT:Initialize()
@@ -20,11 +20,6 @@ function ENT:Initialize()
 	self:SetSolid(SOLID_NONE)
 	self:SetMoveType(MOVETYPE_NONE)
 	self:DrawShadow(false)
-	
-	if CLIENT then
-		hook.Add("PrePlayerDraw", self, self.PrePlayerDraw)
-		hook.Add("PostPlayerDraw", self, self.PostPlayerDraw)
-	end
 
 	self.DieTime = CurTime() + self.LifeTime
 end
@@ -100,8 +95,9 @@ function ENT:Explode()
 	if owner:IsValid() and owner:IsPlayer() and owner:Team() == TEAM_UNDEAD then
 		local pos = self:GetPos()
 
-		util.PoisonBlastDamage(self, owner, pos, self.GrenadeRadius, self.GrenadeDamage, true)
-
+		--util.PoisonBlastDamage(self, owner, pos, self.GrenadeRadius, self.GrenadeDamage, true)
+		util.BlastDamage( self, owner, pos, self.GrenadeRadius, self.GrenadeDamage )
+		
 		local effectdata = EffectData()
 			effectdata:SetOrigin(pos)
 		util.Effect("Explosion", effectdata)
@@ -128,12 +124,4 @@ function ENT:Think()
 	end
 	
 
-end
-
-function ENT:PrePlayerDraw(pl)
-	if pl ~= self:GetOwner() then return end
-end
-
-function ENT:PostPlayerDraw(pl)
-	if pl ~= self:GetOwner() then return end
 end
