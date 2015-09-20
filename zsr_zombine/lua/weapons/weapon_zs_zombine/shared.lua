@@ -2,6 +2,8 @@
 -- Viewmodel for Zombine by LuaKnight (Cpt.Hazama).
 --Based off the Zombie SWEP Base by JetBoom.
 
+if not gamemode.Get("zombiesurvival") then return end
+
 AddCSLuaFile()
 
 SWEP.Base = "weapon_zs_zombie"
