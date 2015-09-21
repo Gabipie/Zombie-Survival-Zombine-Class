@@ -30,7 +30,7 @@ end
 
 function SWEP:SecondaryAttack()
 	if CLIENT then return end
-	if not self.Owner:OnGround() || self:IsMoaning() || self:GetGrenading() then return end
+	if not self.Owner:OnGround() || self:GetGrenading() then return end
 	if CurTime() < self:GetSpawnedTime() then return end
 
 	self:DoAlert()

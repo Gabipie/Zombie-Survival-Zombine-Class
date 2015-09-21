@@ -88,6 +88,13 @@ function CLASS:Move(pl, mv)
 		end
 	end
 	
+	if wep:IsValid() then
+		if wep.GetGrenading && wep:GetGrenading() && CurTime() < wep:GetGrenadeTime() then
+			mv:SetForwardSpeed( 0 )
+			mv:SetSideSpeed( 0 )
+		end
+	end
+	
 end
 
 function CLASS:CalcMainActivity(pl, velocity)
